@@ -3,85 +3,69 @@ import Header from "./components/Header";
 import Countries from "./components/Countries";
 
 function App() {
-  const [countries, setCountries] = useState();
-  const [searchCountry, setSearchCountry] = useState();
-  const [filterCountries, setFilterCountries] = useState();
-  const [continent, setContinent] = useState();
-  const [countriesInContinent, setCountriesInContinent] = useState();
+  const [countries, setCountries] = useState([]);
+  const [searchCountry, setSearchCountry] = useState("");
+  const [continent, setContinent] = useState("");
+  const [filterCountries, setFilterCountries] = useState([]);
 
-  const allCountries = async () => {
-    const response = await fetch("https://restcountries.com/v3.1/all");
-    const countriesData = await response.json();
-    setCountries(countriesData);
+  const fetchCountries = async () => {
+    try {
+      const response = await fetch("https://restcountries.com/v3.1/all");
+      const countriesData = await response.json();
+      setCountries(countriesData);
+      console.log(countries);
+    } catch (error) {
+      console.error("Error fetching countries:", error);
+    }
   };
 
   useEffect(() => {
-    allCountries();
+    fetchCountries();
   }, []);
 
   const searchCountries = (event) => {
-    console.log("search country set");
-    setSearchCountry(event.target.value);
+    setSearchCountry(event.target.value.toLowerCase());
+    console.log(searchCountry);
   };
-
-  useEffect(() => {
-    if (countries) {
-      if (!continent) {
-        const searchedCountries = countries.filter((country) => {
-          return country.name.official
-            .toLowerCase()
-            .includes(searchCountry.toLowerCase());
-        });
-        console.log(searchedCountries);
-        setFilterCountries(searchedCountries);
-      } else {
-        console.log(`else`);
-        if (countriesInContinent) {
-          const searchedCountries = countriesInContinent.filter((country) => {
-            return country.name.official
-              .toLowerCase()
-              .includes(searchCountry.toLowerCase());
-          });
-          setFilterCountries(searchedCountries);
-        }
-      }
-    }
-  }, [searchCountry]);
-
   const continents = (e) => {
     setContinent(e.target.value.toLowerCase());
+    console.log("continent set" + continent);
   };
 
   useEffect(() => {
     if (countries) {
-      const countriesInContinent = countries.filter((country) => {
-        return country.region.toLowerCase() === continent.toLowerCase();
+      const searchedCountries = countries.filter((country) => {
+        const countryName = country.name.official.toLowerCase();
+        const countryRegion = country.region.toLowerCase();
+
+        const matchesSearch = countryName.includes(searchCountry.toLowerCase());
+        const matchesContinent = countryRegion === continent.toLowerCase();
+
+        if (searchCountry && continent) {
+          return matchesSearch && matchesContinent;
+        } else if (searchCountry) {
+          return matchesSearch;
+        } else if (continent) {
+          return matchesContinent;
+        }
+        return true;
       });
-      setCountriesInContinent(countriesInContinent);
-      console.log(countriesInContinent);
+
+      setFilterCountries(searchedCountries);
     }
-  }, [continent]);
+  }, [searchCountry, continent]);
 
   return (
-    <main className="container-fluid bg-dark-subtle overflow-hidden">
+    <main className="container-fluid bg-dark-subtle overflow-hidden p-0">
       <Header
         searchCountries={searchCountries}
         searchCountry={searchCountry}
         continents={continents}
       />
-      {countries && !searchCountry && !continent && (
+      {countries && !searchCountry && continent == "" && (
         <Countries countries={countries} />
       )}
-
-      {!searchCountry && continent && countriesInContinent && (
-        <Countries countries={countriesInContinent} />
-      )}
-      {searchCountry && !continent && filterCountries && (
-        <Countries countries={filterCountries} />
-      )}
-      {searchCountry && continent && filterCountries && (
-        <Countries countries={filterCountries} />
-      )}
+      {filterCountries && <Countries countries={filterCountries} />}
     </main>
   );
 }

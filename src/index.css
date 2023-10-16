@@ -1,7 +1,32 @@
-* {
-  border: 1px solid red;
+:root {
+  /*  (Dark Mode Elements): */
+  --Dark-Blue: hsl(209, 23%, 22%);
+  /* (Dark Mode Background) */
+  --Very-Dark-Blue: hsl(207, 26%, 17%);
+  /*  (Light Mode Text) */
+  --Very-Dark-Blue: hsl(200, 15%, 8%);
+  /* (Light Mode Input) */
+  --Dark-Gray: hsl(0, 0%, 52%);
+  /* (Light Mode Background) */
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  /* (Dark Mode Text & Light Mode Elements) */
+  --White: hsl(0, 0%, 100%);
 }
 
+body {
+  font-size: 14px;
+  background-color: var(--Very-Light-Gray);
+}
+
+header {
+  background-color: var(--White);
+}
+.co
 .card {
-  border-radius: 5%;
+  border-radius: 0.5rem;
+  background-color: var(--White);
+}
+img {
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
 }
