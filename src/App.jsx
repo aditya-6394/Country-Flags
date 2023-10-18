@@ -128,7 +128,6 @@ function App() {
                   continents={continents}
                   continentList={continentList}
                   subRegionList={subRegionList}
-                  subRegion={subRegion}
                   subregion={subregions}
                 />
                 <Sort
