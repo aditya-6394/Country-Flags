@@ -4,7 +4,7 @@
   /* (Dark Mode Background) */
   --Very-Dark-Blue: hsl(207, 26%, 17%);
   /*  (Light Mode Text) */
-  --Very-Dark-Blue: hsl(200, 15%, 8%);
+  /* --Very-Dark-Blue: hsl(200, 15%, 8%); */
   /* (Light Mode Input) */
   --Dark-Gray: hsl(0, 0%, 52%);
   /* (Light Mode Background) */
@@ -15,18 +15,81 @@
 
 body {
   font-size: 14px;
+}
+main {
+  min-height: 100vh;
+}
+.dark main {
+  background-color: var(--Very-Dark-Blue);
+}
+body.light {
   background-color: var(--Very-Light-Gray);
 }
+.dark {
+  background-color: var(--Very-Dark-Blue);
+  color: var(--White);
+}
 
-header {
+header.light {
   background-color: var(--White);
 }
-.co
+header.dark {
+  /* background-color: var(--Dark-Blue); */
+  background-color: var(--Very-Dark-Blue);
+}
+
+.card-row.dark {
+  background-color: var(--Very-Dark-Blue);
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+}
+.card-image {
+  height: 50%;
+}
+.card-description {
+  flex-grow: 1;
+}
+
+.card-description.dark {
+  background-color: var(--Dark-Blue);
+}
+.dark input {
+  background-color: var(--Dark-Blue);
+  color: var(--White);
+}
+.dark .input-div {
+  background-color: var(--Dark-Blue);
+  color: var(--White);
+}
+.dark select {
+  background-color: var(--Dark-Blue);
+  color: var(--White);
+}
 .card {
+  border-radius: 0.5rem;
+}
+.card.light {
   border-radius: 0.5rem;
   background-color: var(--White);
 }
+
+.card:hover {
+  position: relative;
+  top: 0.5rem;
+}
+
 img {
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
+}
+
+.spinner {
+  height: 100vh;
+}
+.wrong-country {
+  height: 75vh;
+  color: red;
 }
