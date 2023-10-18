@@ -5,10 +5,8 @@ import { useNavigate } from "react-router-dom";
 export default function Countries({ countries }) {
   const navigate = useNavigate();
   const handleNavigation = (event) => {
-    console.log(event.target);
-    const ccn3 = event.target.closest(".country");
-    console.log(ccn3);
-    // navigate(`country/:${ccn3}`)
+    const ccn3 = event.target.closest(".country").id;
+    navigate(`country/${ccn3}`);
   };
 
   const theme = useContext(ThemeContext);
