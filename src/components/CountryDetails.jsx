@@ -57,7 +57,6 @@ function CountryDetails() {
   };
 
   const languages = () => {
-    // console.log(country.languages);
     if (!country.languages) {
       return "";
     }

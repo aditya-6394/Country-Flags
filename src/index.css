@@ -94,10 +94,10 @@ input:focus {
   top: 0.5rem;
 }
 
-/* img {
+img {
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
-} */
+}
 
 .spinner {
   height: 100vh;
@@ -114,6 +114,7 @@ input:focus {
 .dark button {
   color: var(--White);
 }
-/* .btn {
+.form-select {
   font-size: 14px;
-} */
+  color: var(--Dark-Gray);
+}
