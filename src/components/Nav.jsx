@@ -4,6 +4,7 @@ import { ThemeContext } from "../App";
 import Select from "./Select";
 import SearchInput from "./SearchInput";
 import Sort from "./Sort";
+
 function Nav({
   searchCountries,
   searchCountry,
@@ -11,6 +12,8 @@ function Nav({
   continentList,
   subRegionList,
   subregion,
+  sortingOption,
+  sortingOrder,
 }) {
   const theme = useContext(ThemeContext);
 
@@ -18,14 +21,14 @@ function Nav({
     <nav
       className={`${theme} row p-4 pb-0 px-5  g-0 d-flex align-items-center `}
     >
-      <div className="col-lg-4 col-12 shadow-sm p-3 rounded d-flex align-items-center input-div">
+      <div className="col-lg-3 col-12 shadow-sm p-3 rounded d-flex align-items-center input-div">
         <span>
           <PiMagnifyingGlassLight className="icon-search me-2" />
         </span>
         <SearchInput value={searchCountry} eventHandler={searchCountries} />
       </div>
 
-      <div className="col-1"></div>
+      {/* <div className="col-1"></div> */}
 
       <div className={`${theme} col-lg-3`}>
         <Select
@@ -35,7 +38,7 @@ function Nav({
         />
       </div>
 
-      <div className="col-1"></div>
+      {/* <div className="col-1"></div> */}
 
       <div className={`${theme} col-lg-3`}>
         <Select
@@ -44,6 +47,8 @@ function Nav({
           optionOne="Select a region"
         />
       </div>
+
+      <Sort sortingOption={sortingOption} sortingOrder={sortingOrder} />
     </nav>
   );
 }

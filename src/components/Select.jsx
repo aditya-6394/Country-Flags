@@ -4,7 +4,7 @@ function Select({ options, onChangeHandler, optionOne }) {
   return (
     <>
       <select
-        className="form-select shadow-sm p-3   rounded border-0"
+        className="form-select shadow-sm p-3  rounded border-0"
         onChange={(e) => {
           onChangeHandler(e);
         }}

@@ -35,7 +35,8 @@ export default function Countries({ countries }) {
               <div className={`${theme} card-description h-50 ps-3 h-auto `}>
                 <h6 className="mt-3 mb-3">{country.name.common}</h6>
                 <p className="mb-1">
-                  <span>Population:</span> {country.population}
+                  <span>Population:</span>{" "}
+                  {country.population.toLocaleString("en-US")}
                 </p>
                 <p className="mb-1">
                   <span>Region:</span>

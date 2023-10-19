@@ -25,6 +25,7 @@ main {
 body.light {
   background-color: var(--Very-Light-Gray);
 }
+
 .dark {
   background-color: var(--Very-Dark-Blue);
   color: var(--White);
@@ -34,7 +35,6 @@ header.light {
   background-color: var(--White);
 }
 header.dark {
-  /* background-color: var(--Dark-Blue); */
   background-color: var(--Very-Dark-Blue);
 }
 
@@ -60,6 +60,19 @@ header.dark {
   background-color: var(--Dark-Blue);
   color: var(--White);
 }
+.bold {
+  font-weight: 600;
+}
+.custom-input,
+.btn {
+  font-size: 14px;
+}
+input:focus {
+  outline: none;
+}
+.custom-select {
+  font-size: 14px;
+}
 .dark .input-div {
   background-color: var(--Dark-Blue);
   color: var(--White);
@@ -80,8 +93,8 @@ header.dark {
   position: relative;
   top: 0.5rem;
 }
-/* 
-img {
+
+/* img {
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
 } */
@@ -93,3 +106,14 @@ img {
   height: 75vh;
   color: red;
 }
+
+.country-details img {
+  height: 50vh;
+}
+
+.dark button {
+  color: var(--White);
+}
+/* .btn {
+  font-size: 14px;
+} */

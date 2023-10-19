@@ -10,7 +10,7 @@ export default function Header({ toggleTheme }) {
       className={`row px-5 py-2 align-items-center g-0 mb-2 shadow-sm p-3 rounded ${theme}`}
     >
       <div className={`${theme}  col-6`}>
-        <h1>Where in the world?</h1>
+        <h3>Where in the world?</h3>
       </div>
       <div className={`${theme}  col-6 text-end`}>
         <p>

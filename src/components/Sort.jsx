@@ -3,8 +3,9 @@ import Select from "./Select";
 
 function Sort({ sortingOption, sortingOrder }) {
   return (
-    <div className="row px-5 mt-2 g-0">
-      <div className="col-lg-3 col-12   shadow-sm">
+    // <div className="row px-5 mt-2 g-0">
+    <>
+      <div className="col-lg-2 col-12   shadow-sm">
         <Select
           options={["Area", "Population"]}
           onChangeHandler={sortingOption}
@@ -12,7 +13,7 @@ function Sort({ sortingOption, sortingOrder }) {
         />
       </div>
 
-      <div className="col-lg-3 col-12  border-0 shadow-sm">
+      <div className="col-lg-1 col-12  border-0 shadow-sm">
         <Select
           options={["Increasing", "Decreasing"]}
           onChangeHandler={sortingOrder}
@@ -20,7 +21,8 @@ function Sort({ sortingOption, sortingOrder }) {
         />
       </div>
       <div className="col-lg-6"></div>
-    </div>
+    </>
+    // </div>
   );
 }
 

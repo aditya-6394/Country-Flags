@@ -82,7 +82,7 @@ function App() {
   const filteredCountries = countries
     .filter((country) => country.region.toLowerCase().includes(continent))
     .filter((country) =>
-      country.name.official.toLowerCase().includes(searchCountry)
+      country.name.common.toLowerCase().includes(searchCountry)
     )
     .filter((country) => {
       if (!country.subregion) {
@@ -95,14 +95,16 @@ function App() {
     console.log(sortOption);
     console.log(sortOrder);
     filteredCountries.sort((a, b) => {
-      if (sortOrder === "increasing") {
-        return sortOption === "area"
-          ? a.area > b.area
-          : a.population > b.population;
+      if (sortOption === "population") {
+        if (sortOrder === "increasing") {
+          return a.population > b.population ? 1 : -1;
+        }
+        return a.population < b.population ? 1 : -1;
       } else {
-        return sortOption === "area"
-          ? a.area < b.area
-          : a.population < b.population;
+        if (sortOrder === "increasing") {
+          return a.area > b.area ? 1 : -1;
+        }
+        return a.area < b.area ? 1 : -1;
       }
     });
   }
@@ -129,11 +131,13 @@ function App() {
                   continentList={continentList}
                   subRegionList={subRegionList}
                   subregion={subregions}
-                />
-                <Sort
                   sortingOption={sortingOption}
                   sortingOrder={sortingOrder}
                 />
+                {/* <Sort
+                  sortingOption={sortingOption}
+                  sortingOrder={sortingOrder}
+                /> */}
                 {countries && filteredCountries.length !== 0 && (
                   <Countries countries={filteredCountries} />
                 )}
